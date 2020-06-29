@@ -9,6 +9,7 @@ import { EventEmitterService } from '../_services/event-emitter.service';
 })
 export class TodoCreateComponent implements OnInit {
   // TODO: types and private/public and why...
+  taskValue: string;
 
   constructor(private todoService: TodoService,
               private eventEmitterService: EventEmitterService) { }
@@ -16,6 +17,7 @@ export class TodoCreateComponent implements OnInit {
   onSubmit(taskDescription: string) {
     this.todoService.postTodo({description: taskDescription}).subscribe(() => {
       this.eventEmitterService.onTodoUpdate();
+      this.taskValue = '';
     }); 
     console.log(taskDescription);
   }

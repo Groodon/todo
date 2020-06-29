@@ -29,7 +29,7 @@ export class TodoListComponent implements OnInit {
     }
   }
 
-  async updateTodos() {
+  updateTodos() {
     const promise = new Promise((resolve, reject) => {
       this.todoService.getAllTodo().subscribe(todos => {
         this.todoTasks = todos;  
