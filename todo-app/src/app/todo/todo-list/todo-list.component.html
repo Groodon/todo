@@ -1,0 +1,8 @@
+<div *ngFor="let task of todoTasks">
+    <app-todo-task
+        [description]=task.description
+        [completed]=task.completed
+        [id]=task._id>
+
+    </app-todo-task>
+</div>
