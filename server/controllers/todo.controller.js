@@ -5,7 +5,7 @@ Controller.addTodo = (req, res) => {
     let todo = new TodoTask(req.body);
 
     todo.save().then(todoRecord => {
-        res.status(201).json(todoRecord);
+        res.status(200).json(todoRecord);
     }).catch(err => {
         console.log(err);
         res.status(400).send("Unable to save comment");

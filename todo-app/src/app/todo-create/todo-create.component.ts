@@ -8,18 +8,19 @@ import { EventEmitterService } from '../_services/event-emitter.service';
   styleUrls: ['./todo-create.component.css']
 })
 export class TodoCreateComponent implements OnInit {
-  // TODO: types and private/public and why...
   taskValue: string;
 
   constructor(private todoService: TodoService,
               private eventEmitterService: EventEmitterService) { }
 
   onSubmit(taskDescription: string) {
-    this.todoService.postTodo({description: taskDescription}).subscribe(() => {
-      this.eventEmitterService.onTodoUpdate();
-      this.taskValue = '';
-    }); 
-    console.log(taskDescription);
+    if (taskDescription.length >= 1) {
+      this.todoService.postTodo({description: taskDescription}).subscribe(() => {
+        this.eventEmitterService.onTodoUpdate();
+        this.taskValue = '';
+      });
+    }
+    
   }
 
   ngOnInit(): void {
