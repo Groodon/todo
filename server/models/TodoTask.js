@@ -4,10 +4,12 @@ const Schema = mongoose.Schema;
 let TodoTask = new Schema({
   description: {
     type: String,
-    required: true
+    required: true,
+    maxlength: 50
   },
   completed: {
     type: Boolean,
+    required: true,
     default: false
   }
 },{

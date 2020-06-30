@@ -1,6 +1,7 @@
-let TodoTask = require('../models/TodoTask');
+const TodoTask = require('../models/TodoTask');
+const Controller = {};
 
-exports.addTodo = (req, res) => {
+Controller.addTodo = (req, res) => {
     let todo = new TodoTask(req.body);
 
     todo.save().then(todoRecord => {
@@ -11,7 +12,7 @@ exports.addTodo = (req, res) => {
   })
 }
 
-exports.getAll = (req, res) => {
+Controller.getAll = (req, res) => {
     TodoTask.find().then(todo => {
         res.status(200).send(todo);
     }).catch(err => {
@@ -20,7 +21,7 @@ exports.getAll = (req, res) => {
     })
 }
 
-exports.deleteTodo = (req, res) => {
+Controller.deleteTodo = (req, res) => {
     TodoTask.findOneAndRemove({_id: req.params.id}, function(err, todoRecord){
         if(err) 
             res.status(400);
@@ -28,15 +29,14 @@ exports.deleteTodo = (req, res) => {
             res.status(404);
         else 
             res.status(204).json();
-        
     });
 }
 
-exports.updateTodo = (req, res) => {
+Controller.updateTodo = (req, res) => {
     TodoTask.findById(req.params.id, function(err, todoRecord) {
         if (!todoRecord) {
             return res.status(204).send(err);
-        }
+        } 
         else {
             todoRecord.completed = req.body.completed
             todoRecord.save().then(todoRecord => {
@@ -47,3 +47,5 @@ exports.updateTodo = (req, res) => {
     }
   });
 }
+
+module.exports = Controller;
