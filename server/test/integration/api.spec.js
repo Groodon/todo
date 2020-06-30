@@ -1,8 +1,13 @@
-var app = require('../../server'),
-chai = require('chai'),
-request = require('supertest');
+const app = require('../../server');
+const expect = require('chai').expect;
+const request = require('supertest');
+const mongoose = require('mongoose');
 
-var expect = chai.expect;
+after((done) => {
+  mongoose.connection.close();
+  app.close(done);
+});
+
 describe('API Tests', () => { 
   var task = { 
     description: 'gotta do this' 
@@ -29,15 +34,14 @@ describe('API Tests', () => {
   it('should update the task', (done) => { 
     request(app).put('/todo/' + task._id).send({completed: true}).end((err, res) => { 
       expect(res.statusCode).to.equal(204); 
-      task = res.body; 
       done(); 
     }); 
   });
   
   it('should delete the task', (done) => { 
-    request(app).put('/todo/' + task._id).send({completed: true}).end((err, res) => { 
+    request(app).delete('/todo/' + task._id).send().end((err, res) => { 
       expect(res.statusCode).to.equal(204); 
-      done(); 
+      done();
     }); 
   }); 
 });

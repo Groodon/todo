@@ -29,7 +29,7 @@ describe('add todotask', () => {
         });
     });
 
-    it('should be invalid because description is exactly 51 characters', (done) => {
+    it('should be invalid because description is over 50 characters', (done) => {
         var task = new TodoTask({description: "o".repeat(51)});
  
         task.validate((err) => {
