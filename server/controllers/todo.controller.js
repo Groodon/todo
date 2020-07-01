@@ -22,18 +22,19 @@ Controller.getAll = (req, res) => {
 }
 
 Controller.deleteTodo = (req, res) => {
-    TodoTask.findOneAndRemove({_id: req.params.id}, function(err, todoRecord){
-        if(err) 
+    TodoTask.findOneAndRemove({_id: req.params.id}, (err, todoRecord) => {
+        if(err) {
             res.status(400);
-        else if (!todoRecord) 
+        } else if (!todoRecord) {
             res.status(404);
-        else 
+        } else { 
             res.status(204).json();
+        }
     });
 }
 
 Controller.updateTodo = (req, res) => {
-    TodoTask.findById(req.params.id, function(err, todoRecord) {
+    TodoTask.findById(req.params.id, (err, todoRecord) => {
         if (!todoRecord) {
             return res.status(204).send(err);
         } 

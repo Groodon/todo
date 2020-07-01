@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TodoService } from '../_services/todo.service';
-import { EventEmitterService } from '../_services/event-emitter.service';
+import { TodoService } from '../../_services/todo.service';
+import { EventEmitterService } from '../../_services/event-emitter.service';
 
 @Component({
   selector: 'app-todo-task',

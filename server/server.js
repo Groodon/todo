@@ -12,8 +12,10 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/todo', todoRoute);
 
-let server = app.listen(config.test_port, function(err) {
-  if (err) throw err; 
+let server = app.listen(config.test_port, (err) => {
+  if (err) {
+    throw err;
+  } 
   console.log("App listening on port " + config.test_port);
 });
 

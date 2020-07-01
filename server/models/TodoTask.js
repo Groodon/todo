@@ -12,7 +12,7 @@ let TodoTask = new Schema({
     required: true,
     default: false
   }
-},{
+}, {
   collection: 'tasks'
 });
 

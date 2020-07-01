@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "_mocha ./**/*.spec.js",
-    "start": "node server",
-    "test-coverage": "istanbul cover _mocha —- -R spec"
+    "start": "node server"
   },
   "author": "",
   "license": "ISC",

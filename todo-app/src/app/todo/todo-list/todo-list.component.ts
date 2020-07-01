@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { TodoService } from '../_services/todo.service';
-import {EventEmitterService} from '../_services/event-emitter.service';
+import { TodoService } from '../../_services/todo.service';
+import {EventEmitterService} from '../../_services/event-emitter.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -23,7 +23,6 @@ export class TodoListComponent implements OnInit {
     if (this.eventEmitterService.subsVar === undefined) {
       this.eventEmitterService.subsVar = this.eventEmitterService.
       invokeUpdateTodos.subscribe(() => {
-        console.log("hello eller");
         this.updateTodos();
       });
     }
