@@ -1,8 +1,8 @@
 ## How to run
 
-Run `ng serve` in the todo-app folder
+Run `npm install` and then `ng serve` in the todo-app folder
 
-Run `node server` in the server folder
+Run `npm install` and then `node server` in the server folder
 
 
 ## Running tests
